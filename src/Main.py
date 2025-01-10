@@ -12,8 +12,13 @@ def main():
     cell_size_y = (screen_y - 2 * margin) / num_rows
     win = window(screen_x, screen_y)
 
-    maze1 = maze(margin, margin, num_rows, num_cols, cell_size_x, cell_size_y, win)
-
+    maze1 = maze(margin, margin, num_rows, num_cols, cell_size_x, cell_size_y, win, 15)
+    print("maze created")
+    is_solvable = maze1.solve()
+    if not is_solvable:
+        print("maze can not be solved!")
+    else:
+        print("maze solved!")
     win.wait_for_close()
 
 

@@ -1,11 +1,12 @@
 from Window import Line, Point
 
 class cell:
-    def __init__(self, win):
+    def __init__(self, win=None, visited=False):
         self.has_left_wall = True
         self.has_right_wall = True
         self.has_top_wall = True
         self.has_bottom_wall = True
+        self.visited = False
         self._x1 = None
         self._y1 = None
         self._x2 = None
@@ -21,12 +22,21 @@ class cell:
         self._y2 = y2
         if self.has_left_wall:
             self._win.draw_line(Line(Point(x1, y1),Point(x1,y2)))
+        else:
+            self._win.draw_line(Line(Point(x1, y1),Point(x1,y2)),"white")
         if self.has_right_wall:
             self._win.draw_line(Line(Point(x2, y2),Point(x2,y1)))
+        else:
+            self._win.draw_line(Line(Point(x2, y2),Point(x2,y1)),"white")
         if self.has_top_wall:
             self._win.draw_line(Line(Point(x1, y1),Point(x2,y1)))
+        else:
+            self._win.draw_line(Line(Point(x1, y1),Point(x2,y1)),"white")
         if self.has_bottom_wall:
             self._win.draw_line(Line(Point(x1, y2),Point(x2,y2)))
+        else:
+            self._win.draw_line(Line(Point(x1, y2),Point(x2,y2)),"white")
+        
     
     def draw_move(self, to_cell, undo=False):
         half_length = abs(self._x2 - self._x1) // 2
