@@ -1,5 +1,6 @@
 from Window import window
 from Maze import maze
+import random
 
 
 def main():
@@ -12,7 +13,7 @@ def main():
     cell_size_y = (screen_y - 2 * margin) / num_rows
     win = window(screen_x, screen_y)
 
-    maze1 = maze(margin, margin, num_rows, num_cols, cell_size_x, cell_size_y, win, 15)
+    maze1 = maze(margin, margin, num_rows, num_cols, cell_size_x, cell_size_y, win, random.randint(1,9999))
     print("maze created")
     is_solvable = maze1.solve()
     if not is_solvable:
